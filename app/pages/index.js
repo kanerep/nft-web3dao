@@ -16,7 +16,7 @@ export default function Home() {
   // checks if the currently connected MetaMask wallet is the owner of the contract
   const [isOwner, setIsOwner] = useState(false);
   // tokenIdsMinted keeps track of the number of tokenIds that have been minted
-  const [tokenIdsMinted, setTokenIdsMinted] = useState(0);
+  const [tokenIdsMinted, setTokenIdsMinted] = useState('0');
   // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
   const web3ModalRef = useRef();
 
@@ -142,7 +142,7 @@ export default function Home() {
       // call the tokenIds from the contract
       const _tokenIds = await nftContract.tokenIds();
       //_tokenIds is a `Big Number`. We need to convert the Big Number to a string
-      setTokenIdsMinted(_tokenIds.string());
+      setTokenIdsMinted(_tokenIds.toString());
     } catch (err) {
       console.error(err);
     }
